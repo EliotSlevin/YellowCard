@@ -1,7 +1,8 @@
 # YellowCard
 Designs: https://zpl.io/adxjj17
 
-The first goal of phase one will be to build a basic app which allows a single pharamcist to edit information, and patients to login and view them in the 'Medication List' screen.
+The first goal of phase one will be to build a basic app which allows a single pharamcist to edit information, and patients to login and view them in the 'Medication List' screen. The goal of the first phase is to setup the infrastructure to add upon in the next phases. 
+
 
 ### React Native App Functionality
 Patient Login UI
@@ -19,8 +20,3 @@ Add / Edit / Delete Patient Information. Each patient has the following fields, 
 Add / Edit / Delete Medications, which have the following fields
 
 `genericName: string, brandName: string, purpose: string, extraInfo: string, timings:{w:number,b:number,l:number,d:number,s:number}`
-
-
-The goal of the first phase is to build the infrastructure to add upon, the second phase will be looking at a smart today view, notifications, etc. 
-
-
