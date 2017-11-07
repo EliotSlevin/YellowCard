@@ -20,3 +20,8 @@ Add / Edit / Delete Patient Information. Each patient has the following fields, 
 Add / Edit / Delete Medications, which have the following fields
 
 `genericName: string, brandName: string, purpose: string, extraInfo: string, timings:{w:number,b:number,l:number,d:number,s:number}`
+
+
+### Backend Connection.
+These two UI's will require a database, a way for clients to connect to that database, and an authentication system. 
+I'm a fan of firebase, but I'm open to suggestions. 
