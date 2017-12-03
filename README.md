@@ -5,9 +5,9 @@ The first goal of phase one will be to build a basic app which allows a single p
 
 
 ### React Native App Functionality
-Patient Login UI
-Tabbed navigation between 'Medication List' and empty 'Today' tab.
-View a list of their medications, with the additional details. 
+Patient Login UI (I haven't set designs for this as it depends on what auth library we use, and what's easiest, but probably either email + pass or passwordless login).
+Tabbed navigation, with two tabs setup: 'Medication List' and an empty 'Today' tab.
+Medication list tab: A patient can view their list of medications, with aditional details.
 Set up persistant database on app (e.g. if the app is closed, a patient's medications don't need to be re-fetched, and they stay logged in - see https://facebook.github.io/react-native/docs/asyncstorage.html)
 
 ### Pharmacist Portal Functionality
