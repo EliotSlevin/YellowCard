@@ -11,7 +11,7 @@ Medication list tab: A patient can view their list of medications, with aditiona
 Set up persistant database on app (e.g. if the app is closed, a patient's medications don't need to be re-fetched, and they stay logged in - see https://facebook.github.io/react-native/docs/asyncstorage.html)
 
 ### Pharmacist Portal Functionality
-A single admin account will be able to login and edit information about all patients. This will be the easiest way to test a MVP. This admin account will be able to do the following:
+A single admin account will be able to login and edit information about all patients. This will be the easiest way to test a MVP. This admin account has the following power.
 
 Add / Edit / Delete Patients, and their details. Each patient has the following fields, and a list of medications.
 
