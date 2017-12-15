@@ -1,23 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+import { ScreenOrientation } from 'expo';
+ScreenOrientation.allow(ScreenOrientation.Orientation.ALL);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import Today from './screens/Today'
+import MedList from './screens/MedList'
+
+const App = TabNavigator(
+  {
+    Today: {
+      screen: Today,
+      path: '',
+    },
+    MedList: {
+      screen: MedList,
+      path: 'med-list'
+    }
   },
-});
+  {
+    initialRouteName: 'Today',
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+      activeTintColor: Platform.OS === 'ios' ? '#fffd86' : '#fff',
+    },
+  }
+);
+
+
+export default () => <App />;
