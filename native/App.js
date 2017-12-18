@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import { ScreenOrientation } from 'expo';
