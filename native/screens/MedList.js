@@ -1,13 +1,9 @@
 import React from 'react'
-import {
-	Platform,
-	View,
-	Text,
-	SafeAreaView,
-	StatusBar
-} from 'react-native';
+import { Platform, View, Text, SafeAreaView, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import styles from '../styles'
+import TitleBar from '../components/TitleBar'
 
 export default class Today extends React.Component {
 	static navigationOptions = {
@@ -94,10 +90,7 @@ export default class Today extends React.Component {
 		return (
 			<SafeAreaView style={styles.safeArea} forceInset={{ horizontal: 'always', top: 'always' }}>
 				<View style={styles.container}>
-					<View>
-						<Text>{this.data.users[0].name}</Text>
-						<Text>{this.data.users[0].nhiNumber}</Text>
-					</View>
+					<TitleBar title='Eliot Slevin' subTitle='ABC1234' />
 					<View>
 						<Text>Generic Name:</Text>
 						<Text>{this.data.medications[0].name}</Text>
@@ -125,10 +118,10 @@ export default class Today extends React.Component {
 									</View>
 								)
 							} else return (
-									<View key={i}>
-										<Text>{schedule.name}</Text>
-										<Text>0</Text>
-									</View>
+								<View key={i}>
+									<Text>{schedule.name}</Text>
+									<Text>0</Text>
+								</View>
 							)
 						})}
 					</View>
