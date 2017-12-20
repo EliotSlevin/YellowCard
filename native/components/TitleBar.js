@@ -2,10 +2,10 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import styles from '../styles'
 
-const titleBarStyle = StyleSheet.create({
-  container: { padding: 7.5, height: '22%', backgroundColor: '#fffd86' },
-  title: { marginTop: 7.5, fontSize: 40, fontWeight: '400' },
-  subTitle: {marginTop: 7.5}
+const componentStyle = StyleSheet.create({
+	container: { padding: 7.5, paddingTop: 15, paddingLeft: 15, marginBottom: 20, height: '22%', backgroundColor: '#fffd86' },
+  title: { fontSize: 40, fontWeight: '400' },
+	subTitle: {  }
 })
 
 export default class TitleBar extends React.Component {
@@ -14,9 +14,9 @@ export default class TitleBar extends React.Component {
     const subTitle = this.props.subTitle
 
     return (
-      <View style={[titleBarStyle.container]}>
-        <Text style={[titleBarStyle.title, styles.medium40]}>{title}</Text>
-        <Text style={[titleBarStyle.subTitle, styles.regular17]}>{subTitle}</Text>
+      <View style={[componentStyle.container]}>
+        <Text style={[componentStyle.title, styles.medium40]}>{title}</Text>
+        <Text style={[componentStyle.subTitle, styles.regular17]}>{subTitle}</Text>
       </View>
     )
   }

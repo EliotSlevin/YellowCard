@@ -1,11 +1,11 @@
 import React from 'react'
-import { Platform, View, Text, SafeAreaView, StatusBar } from 'react-native';
+import { Platform, View, Text, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import styles from '../styles'
-import TitleBar from '../components/TitleBar'
+import { TitleBar, LabelledDescription, SchedulePanel } from '../components'
 
-export default class Today extends React.Component {
+export class MedList extends React.Component {
 	static navigationOptions = {
 		tabBarLabel: 'Medication List label',
 		tabBarIcon: ({ tintColor, focused }) => (
@@ -36,7 +36,7 @@ export default class Today extends React.Component {
 					extraInfo: 'Swallow whole, take with food'
 				}
 			],
-			schedules: [
+			routines: [
 				{
 					id: 0,
 					user_id: 0,
@@ -68,17 +68,17 @@ export default class Today extends React.Component {
 					time: '10:00pm'
 				},
 			],
-			administration: [
+			schedules: [
 				{
 					medication_id: 0,
 					user_id: 0,
-					schedule_id: 1,
+					routine_id: 1,
 					amount: 1
 				},
 				{
 					medication_id: 0,
 					user_id: 0,
-					schedule_id: 3,
+					routine_id: 3,
 					amount: 1
 				},
 			]
@@ -91,42 +91,17 @@ export default class Today extends React.Component {
 			<SafeAreaView style={styles.safeArea} forceInset={{ horizontal: 'always', top: 'always' }}>
 				<View style={styles.container}>
 					<TitleBar title='Eliot Slevin' subTitle='ABC1234' />
-					<View>
-						<Text>Generic Name:</Text>
-						<Text>{this.data.medications[0].name}</Text>
-					</View>
-					<View>
-						<Text>Brand Name:</Text>
-						<Text>{this.data.medications[0].brandName}</Text>
-					</View>
-					<View>
-						<Text>What's it for:</Text>
-						<Text>{this.data.medications[0].purpose}</Text>
-					</View>
-					<View>
-						<Text>Extra info:</Text>
-						<Text>{this.data.medications[0].extraInfo}</Text>
-					</View>
-					<View>
-						{this.data.schedules.map((schedule, i) => {
-							const ad = this.data.administration.find((ad) => ad.schedule_id == schedule.id)
-							if (ad) {
-								return (
-									<View key={i}>
-										<Text>{schedule.name}</Text>
-										<Text>{ad.amount}</Text>
-									</View>
-								)
-							} else return (
-								<View key={i}>
-									<Text>{schedule.name}</Text>
-									<Text>0</Text>
-								</View>
-							)
-						})}
-					</View>
+					<ScrollView>
+						<LabelledDescription label='Generic Name:' description={this.data.medications[0].name} />
+						<LabelledDescription label='Brand Name:' description={this.data.medications[0].brandName} />
+						<LabelledDescription label="What's it for:" description={this.data.medications[0].purpose} />
+						<LabelledDescription label='Extra info:' description={this.data.medications[0].extraInfo} />
+						<SchedulePanel schedules={this.data.schedules} routines={this.data.routines} />
+					</ScrollView>
 				</View>
 			</SafeAreaView>
 		)
 	}
 }
+
+export default MedList 
