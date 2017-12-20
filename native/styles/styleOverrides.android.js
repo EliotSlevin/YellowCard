@@ -18,6 +18,7 @@ export default {
   },
   bold16: {
     fontFamily: 'Roboto',
+		fontWeight: 'bold',
     fontSize: 16,
   },
 }

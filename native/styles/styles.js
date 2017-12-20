@@ -31,10 +31,45 @@ const baseStyles = {
     fontFamily: 'SFUIText-Bold',
     fontSize: 16,
   },
+  get label() {
+    return {
+      textAlign: 'left',
+      ...this.bold16
+    }
+  },
+  get description() {
+    return {
+      textAlign: 'left',
+      ...this.regular21
+    }
+  },
 }
 
-const intermediate = mergeWith(merge, baseStyles, styleOverrides)
-console.log('intermediate', intermediate)
-const styles = StyleSheet.create(intermediate)
+const staticStyles = mergeWith(merge, baseStyles, styleOverrides)
+const dynamicStyles = [
+	(staticStyles) => {
+		return {
+			...staticStyles,
+			label: {
+				textAlign: 'left',
+				...staticStyles.bold16
+			}
+		}
+	},
+	(staticStyles) => {
+		return {
+			...staticStyles,
+			description: {
+				textAlign: 'left',
+				...staticStyles.regular21
+			}
+		}
+	},
+]
+const mergedStyles = dynamicStyles.reduce((accu, cur, i) => cur(accu), staticStyles)
+const styles = StyleSheet.create(mergedStyles)
+
+
+
 
 export { styles as default }
