@@ -21,4 +21,9 @@ export default {
 		fontWeight: 'bold',
     fontSize: 16,
   },
+  bold25: {
+    fontFamily: 'Roboto',
+		fontWeight: 'bold',
+    fontSize: 25,
+  },
 }
