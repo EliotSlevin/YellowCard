@@ -5,26 +5,23 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import { ScreenOrientation } from 'expo';
 ScreenOrientation.allow(ScreenOrientation.Orientation.ALL);
 
-import Today from './screens/Today'
-import MedList from './screens/MedList'
+import { Main, Login } from './screens'
 
-const App = TabNavigator(
+const App = StackNavigator(
   {
-    Today: {
-      screen: Today,
-      path: '',
+    Login: {
+      screen: Login,
+      path: 'login',
+		},
+		Main: {
+      screen: Main,
+      path: 'main',
     },
-    MedList: {
-      screen: MedList,
-      path: 'med-list'
-    }
   },
   {
-    initialRouteName: 'Today',
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ? '#fffd86' : '#fff',
-    },
+    initialRouteName: 'Login',
+		headerMode: 'screen',
+		navigationOptions:{ header: null},
   }
 );
 
