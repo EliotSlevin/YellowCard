@@ -38,27 +38,5 @@ const baseStyles = {
   },
 }
 
-const staticStyles = mergeWith(merge, baseStyles, styleOverrides)
-const dynamicStyles = [
-	(staticStyles) => {
-		return {
-			...staticStyles,
-			label: {
-				textAlign: 'left',
-				...staticStyles.bold16
-			}
-		}
-	},
-	(staticStyles) => {
-		return {
-			...staticStyles,
-			description: {
-				textAlign: 'left',
-				...staticStyles.regular21
-			}
-		}
-	},
-]
-
-const mergedStyles = dynamicStyles.reduce((accu, cur, i) => cur(accu), staticStyles)
+const mergedStyles = mergeWith(merge, baseStyles, styleOverrides)
 export { mergedStyles as default }
