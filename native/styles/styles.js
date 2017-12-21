@@ -6,6 +6,7 @@ import { Constants } from 'expo';
 import styleOverrides from './styleOverrides'
 
 const baseStyles = {
+	// move to 'base' namespace if gets big
   safeArea: {
     flex: 1,
     backgroundColor: 'white',
@@ -14,7 +15,7 @@ const baseStyles = {
     flex: 1,
     backgroundColor: 'white',
   },
-  // move to textStyles if gets big
+  // move to 'text' namespace if gets big
   regular17: {
     fontFamily: 'SFUIText-Regular',
     fontSize: 17,
@@ -31,17 +32,9 @@ const baseStyles = {
     fontFamily: 'SFUIText-Bold',
     fontSize: 16,
   },
-  get label() {
-    return {
-      textAlign: 'left',
-      ...this.bold16
-    }
-  },
-  get description() {
-    return {
-      textAlign: 'left',
-      ...this.regular21
-    }
+  bold25: {
+    fontFamily: 'SFUIText-Bold',
+    fontSize: 16,
   },
 }
 
@@ -66,10 +59,6 @@ const dynamicStyles = [
 		}
 	},
 ]
+
 const mergedStyles = dynamicStyles.reduce((accu, cur, i) => cur(accu), staticStyles)
-const styles = StyleSheet.create(mergedStyles)
-
-
-
-
-export { styles as default }
+export { mergedStyles as default }
