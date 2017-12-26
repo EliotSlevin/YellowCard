@@ -10,8 +10,11 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
     "firebase-admin": "~5.4.2",
-    "firebase-functions": "^0.7.1"
+    "firebase-functions": "^0.7.1",
+    "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "tslint": "^5.8.0",
