@@ -56,3 +56,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# app-specific data
+yc_pk.json
