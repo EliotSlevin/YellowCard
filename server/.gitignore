@@ -1,5 +1,3 @@
-/functions/lib/**/*.js      # ignore typescript generated js files
-
 # Logs
 logs
 *.log
