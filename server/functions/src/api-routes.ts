@@ -11,7 +11,7 @@ const getInitData = (req, res) => {
     })
     .catch((err) => {
       console.error('err', err)
-      res.status(500).json(err);
+      res.status(500).json({ error: err });
     })
 }
 

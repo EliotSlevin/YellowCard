@@ -23,6 +23,7 @@ export const verifyUser = (req, res) => {
     })
     .then((apiRes) => apiRes.json())
     .then((apiResBody) => {
+      if (apiResBody.error) throw apiResBody.error
       const uid = apiResBody.localId
       const authIdToken = apiResBody.idToken
       const authRefreshToken = apiResBody.refreshToken
