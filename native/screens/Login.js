@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Button } from 'react-native';
 
 import styles from '../styles'
-import * as colors from '../shared/colors'
+import * as colors from '../modules/shared/colors'
 
 const componentStyles = StyleSheet.create({
   safeArea: {
