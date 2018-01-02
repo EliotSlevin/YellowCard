@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Button } from 'react-native';
+import { connect } from 'react-redux'
 
 import styles from '../styles'
 import * as colors from '../modules/shared/colors'
+import { initFirebaseRequest } from '../modules/shared'
 
 const componentStyles = StyleSheet.create({
   safeArea: {
@@ -20,7 +22,6 @@ export class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      err: null
     }
   }
 
@@ -29,33 +30,17 @@ export class Login extends Component {
   }
 
   onLoginAction() {
-    const { email, password } = this.state
-    const url = 'https://us-central1-yellow-card-85ae7.cloudfunctions.net/api/'
-    fetch(url,
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password })
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.error) throw res.error
-        const initData = res
-        this.props.navigation.navigate('Main')
-      })
-      .catch((err) => {
-        this.setState({err: 'Invalid email or password'})
-      })
+    console.log('onloginaction', this.state)
+    this.props.dispatch(initFirebaseRequest(this.state))
   }
 
   render() {
+    const err = this.props.shared.firebase.err
+
     return (
       <SafeAreaView style={componentStyles.safeArea} forceInset={{ horizontal: 'always', top: 'always' }}>
         <View style={componentStyles.container}>
-          {this.state.err && <Text>{this.state.err}</Text>}
+          {err && <Text>{err}</Text>}
           <TextInput placeholder='email' value={this.state.email} onChangeText={(text) => this.setState({ email: text })} />
           <TextInput placeholder='password' password={true} onChangeText={(text) => this.setState({ password: text })} />
           <Button title='Sign in' onPress={() => this.onLoginAction()}></Button>
@@ -65,4 +50,9 @@ export class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  console.log('state', JSON.stringify(state))
+  const { shared } = state
+  return { shared }
+}
+export default connect(mapStateToProps)(Login)
