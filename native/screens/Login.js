@@ -30,7 +30,6 @@ export class Login extends Component {
   }
 
   onLoginAction() {
-    console.log('onloginaction', this.state)
     this.props.dispatch(initFirebaseRequest(this.state))
   }
 
@@ -51,7 +50,6 @@ export class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', JSON.stringify(state))
   const { shared } = state
   return { shared }
 }
