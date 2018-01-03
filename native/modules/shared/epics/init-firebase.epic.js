@@ -1,8 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import '../../shared/rxjs-operators'
 import * as firebase from 'firebase';
+import { NavigationActions } from 'react-navigation'
 
 import { initFirebaseRequest, initFirebaseSuccess, initFirebaseFail, actionTypes as types } from '../actions'
+
 
 const InitFirebaseEpic = (action$, store) => {
   return action$.ofType(types.INIT_FIREBASE_REQUEST)
@@ -29,8 +31,14 @@ const InitFirebaseEpic = (action$, store) => {
               messagingSenderId: data.MESSAGING_SENDER_ID
             })
 
+            const navToMainScreen = NavigationActions.navigate({
+              routeName: 'Main',
+              params: {},
+            })
+
             return Observable.concat(
               Observable.of(initFirebaseSuccess(client)),
+              Observable.of(navToMainScreen)
             )
           } else throw payload
         })

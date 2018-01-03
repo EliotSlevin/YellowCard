@@ -1,10 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { rootEpic, rootReducer } from './modules/root';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createEpicMiddleware, combineEpics } from 'redux-observable';
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+import shared, { InitFirebaseEpic } from './modules/shared';
 
-export default function configureStore() {
+
+export default function configureStore(navReducer) {
+  const rootEpic = combineEpics(InitFirebaseEpic)
+  const epicMiddleware = createEpicMiddleware(rootEpic);
+
+  const rootReducer = combineReducers({
+    shared,
+    nav: navReducer,
+  })
+
   const store = createStore(
     rootReducer,
     applyMiddleware(epicMiddleware)
