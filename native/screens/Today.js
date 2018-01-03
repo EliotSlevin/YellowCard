@@ -7,7 +7,7 @@ import {
 	StatusBar
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import styles from '../styles'
+import styles from '../modules/shared/styles'
 
 export default class Today extends React.Component {
 	static navigationOptions = {

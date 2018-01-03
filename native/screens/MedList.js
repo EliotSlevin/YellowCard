@@ -2,8 +2,8 @@ import React from 'react'
 import { Platform, View, Text, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import styles from '../styles'
-import { TitleBar, LabelledDescription, SchedulePanel } from '../components'
+import styles from '../modules/shared/styles'
+import { TitleBar, LabelledDescription, SchedulePanel } from '../modules/shared/components'
 
 export class MedList extends React.Component {
 	static navigationOptions = {

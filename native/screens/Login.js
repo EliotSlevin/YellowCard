@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, View, SafeAreaView, Button } from 'react-n
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 
-import styles from '../styles'
+import styles from '../modules/shared/styles'
 import * as colors from '../modules/shared/colors'
 import { initFirebaseRequest } from '../modules/shared'
 
