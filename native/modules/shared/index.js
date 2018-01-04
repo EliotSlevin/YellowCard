@@ -5,8 +5,10 @@ import { initFirebaseRequest } from './actions'
 import { InitFirebaseEpic } from './epics'
 import { TitleBar, LabelledDescription, SchedulePanel } from './components'
 
-export { 
-  colors, reducer as default, 
-  InitFirebaseEpic, initFirebaseRequest, 
-  TitleBar, LabelledDescription, SchedulePanel 
+export {
+  reducer as default,
+  colors,
+  InitFirebaseEpic,
+  initFirebaseRequest,
+  TitleBar, LabelledDescription, SchedulePanel
 }
