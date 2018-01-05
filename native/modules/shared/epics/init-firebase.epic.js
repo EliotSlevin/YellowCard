@@ -27,6 +27,7 @@ const InitFirebaseEpic = (action$, store) => {
               apiKey: data.API_KEY,
               authDomain: data.AUTH_DOMAIN,
               databaseURL: data.DATABASE_URL,
+              projectId: data.PROJECT_ID,
               storageBucket: data.STORAGE_BUCKET_URL,
               messagingSenderId: data.MESSAGING_SENDER_ID
             })
