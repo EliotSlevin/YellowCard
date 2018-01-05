@@ -44,9 +44,9 @@ export class Login extends Component {
         <View style={componentStyles.container}>
           <FormValidationMessage>{err}</FormValidationMessage>
           <FormLabel>Email Address</FormLabel>
-          <FormInput placeholder='Email Address' value={this.state.email} onChangeText={(text) => this.setState({ email: text })} />
+          <FormInput keyboardType='email-address' autoCapitalize='none' placeholder='Email Address' value={this.state.email} onChangeText={(text) => this.setState({ email: text })} />
           <FormLabel>Password</FormLabel>
-          <FormInput secureTextEntry={true} password={true} placeholder='Password' onChangeText={(text) => this.setState({ password: text })} />
+          <FormInput secureTextEntry={true} password={true} autoCapitalize='none' placeholder='Password' onChangeText={(text) => this.setState({ password: text })} />
           <Button title='Sign in' onPress={() => this.onLoginAction()}></Button>
         </View>
       </SafeAreaView>
