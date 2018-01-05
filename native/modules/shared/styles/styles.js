@@ -50,7 +50,7 @@ const baseStyles = {
   bold25: {
     fontFamily: 'System',
     fontWeight: '800',
-    fontSize: 16,
+    fontSize: 25,
   },
 }
 
