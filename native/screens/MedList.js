@@ -10,7 +10,7 @@ import { updateMedsRequest } from '../modules/med-list'
 
 export class MedList extends React.Component {
   static navigationOptions = {
-    tabBarLabel: 'Medication List label',
+    tabBarLabel: 'Medication List',
     tabBarIcon: ({ tintColor, focused }) => (
       <MaterialCommunityIcons
         name={'clipboard-text'}

@@ -11,7 +11,7 @@ import styles from '../modules/shared/styles'
 
 export default class Today extends React.Component {
 	static navigationOptions = {
-		tabBarLabel: 'Today label',
+		tabBarLabel: 'Today',
 		tabBarIcon: ({ tintColor, focused }) => (
 			<MaterialIcons
 				name={'list'}
