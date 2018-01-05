@@ -1,5 +1,19 @@
+import types from './actions'
 
-
-initialState = {
-  medications = null // { each medication has a guid to avoid collision globally }
+const initialState = {
+  medications: {} // { each medication has a unique identifier to avoid collision globally }
 }
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case types.UPDATE_MEDS_REQUEST:
+      return { ...state, isLoading: true }
+    case types.UPDATE_MEDS_SUCCESS:
+      state.medications = { ...state.medications, ...medications }
+      return { ...state, isLoading: false }
+    default:
+      return state
+  }
+}
+
+export default reducer
