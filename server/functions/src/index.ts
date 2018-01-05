@@ -1,6 +1,5 @@
 import * as functions from 'firebase-functions';
 // import * as admin from 'firebase-admin'
-// uncomment to init firebase-admin (manage user, realtime db)
 // admin.initializeApp(functions.config().firebase);
 
 // tslint:disable-next-line:no-import-side-effect
