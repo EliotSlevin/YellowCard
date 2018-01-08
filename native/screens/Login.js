@@ -5,7 +5,7 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 
 import styles from '../modules/shared/styles'
 import * as colors from '../modules/shared/colors'
-import { initFirebaseRequest } from '../modules/shared'
+import { initFirebaseRequest } from '../modules/user'
 
 
 const componentStyles = StyleSheet.create({
@@ -36,7 +36,7 @@ export class Login extends Component {
   }
 
   render() {
-    const err = this.props.shared.firebase.err
+    const err = this.props.firebase.err
 
     // remove securetextentry={true} after update react native/eject
     return (
@@ -54,8 +54,8 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { shared } = state
-  return { shared }
-}
+const mapStateToProps = (state) => ({
+  firebase: state.firebase
+})
+
 export default connect(mapStateToProps)(Login)
