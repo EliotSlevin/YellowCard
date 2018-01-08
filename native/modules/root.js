@@ -2,13 +2,16 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 
 import nav from './nav'
-import shared, { InitFirebaseEpic } from './shared';
+import {
+  userReducer as user, firebaseReducer as firebase,
+  InitAuthEpic, InitFirebaseEpic, LoginUserEpic
+} from './user';
 import medications, { UpdateMedicationsEpic } from './med-list'
 
 export const createRootEpicMiddleware = (...epics) => {
   const rootEpic = combineEpics(
-    InitFirebaseEpic, 
-    UpdateMedicationsEpic, 
+    InitAuthEpic, InitFirebaseEpic, LoginUserEpic,
+    UpdateMedicationsEpic,
     ...epics
   )
 
@@ -19,7 +22,8 @@ export const createRootEpicMiddleware = (...epics) => {
 
 export const createRootReducer = (reducersMap) => {
   const rootReducer = combineReducers({
-    shared,
+    firebase,
+    user,
     nav,
     medications,
     ...reducersMap,

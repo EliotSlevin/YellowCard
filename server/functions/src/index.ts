@@ -7,6 +7,7 @@ import 'dotenv/config'
 
 import authRoutes from './auth'
 import apiRoutes from './api-routes'
+import dbRoutes from './db-routes'
 
 const express = require('express')
 const app = express()
@@ -15,6 +16,7 @@ const app = express()
 // app.use(require('cors')())
 
 app.use('/auth', authRoutes)
+app.use('/db', dbRoutes)
 app.use('/', apiRoutes)
 
 // `/api` endpoint

@@ -7,6 +7,15 @@ const {
   PROJECT_ID, MESSAGING_SENDER_ID
 } = process.env;
 
+const client = firebase.initializeApp({
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DATABASE_URL,
+  storageBucket: STORAGE_BUCKET_URL,
+  projectId: PROJECT_ID,
+  messagingSenderId: MESSAGING_SENDER_ID
+})
+
 const router = require('express').Router()
 
 const getInitData = (req, res) => {
@@ -24,24 +33,5 @@ const getInitData = (req, res) => {
 
 
 router.post('/', (req, res) => getInitData(req, res))
-router.get('/', (req, res) => {
-  const resData = { API_KEY, AUTH_DOMAIN, DATABASE_URL, STORAGE_BUCKET_URL, PROJECT_ID, MESSAGING_SENDER_ID }
-  const client = firebase.initializeApp({
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    databaseURL: DATABASE_URL,
-    storageBucket: STORAGE_BUCKET_URL,
-    projectId: PROJECT_ID,
-    messagingSenderId: MESSAGING_SENDER_ID
-  })
-  firebase.firestore().collection('medications').get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, JSON.stringify(doc.data()))
-        res.json(doc.data())
-      })
-    })
-    .catch((err) => console.log(err))
-})
 
 export default router

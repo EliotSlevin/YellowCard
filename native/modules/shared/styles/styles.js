@@ -55,5 +55,5 @@ const baseStyles = {
 }
 
 const mergedStyles = mergeWith(merge, baseStyles, styleOverrides)
-console.log('mergedstyles', JSON.stringify(mergedStyles, null, 2))
+
 export { mergedStyles as default }

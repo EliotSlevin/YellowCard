@@ -7,4 +7,4 @@ export const updateMedsSuccess = (medications) => ({
   medications 
 })
 
-export const updateMedsFail = () => ({ type: types.UPDATE_MEDS_FAIL, err })
+export const updateMedsFail = (err) => ({ type: types.UPDATE_MEDS_FAIL, err })
