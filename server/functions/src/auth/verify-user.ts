@@ -1,15 +1,14 @@
 import fetch from 'node-fetch'
 const { API_KEY } = process.env;
 
-const verifyUserUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword'
+const verifyUserUrl = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${API_KEY}`
 
 
 export const verifyUser = (req, res) => {
   if (!req.body.email) return res.status(400).json({ error: 'missing email' })
   if (!req.body.password) return res.status(400).json({ error: 'missing password' })
 
-  const url = `${verifyUserUrl}?key=${API_KEY}`
-  return fetch(url,
+  return fetch(verifyUserUrl,
     {
       method: "POST",
       headers: {
@@ -38,7 +37,10 @@ const router = require('express').Router()
 router.post('/', (req, res) => {
   return verifyUser(req, res)
     .then((data) => res.status(200).json(data))
-    .catch((err) => res.status(500).json(err))
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
 })
 
 export default router

@@ -8,17 +8,57 @@ const {
 
 const router = require('express').Router()
 
-router.get('/medications', (req, res) => {
-  firebase.firestore().collection('medications').get()
+function getKeyedCollection(collectionId: string) {
+  return firebase.firestore().collection(collectionId).get()
     .then((querySnapshot) => {
-      const medications = {}
+      const collection = {}
       querySnapshot.forEach((doc) => {
-        medications[doc.id] = doc.data()
+        collection[doc.id] = doc.data()
       })
 
-      res.json(medications)
+      return collection
     })
-    .catch((err) => console.log(err))
+}
+
+function getKeyedEntity(collectionId: string, entityId: string) {
+  return firebase.firestore().collection(collectionId).doc(entityId)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) throw { error: `/${collectionId}/${entityId} does not exist` }
+
+      return { [doc.id]: doc.data() }
+    })
+
+}
+
+router.get('/medications', (req, res) => {
+  getKeyedCollection('medications')
+    .then((medications) => res.json(medications))
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json('Unable to retrieve /medications')
+    })
+})
+
+router.get('/medications/:id', (req, res) => {
+  const id = req.params.id
+  getKeyedEntity('medications', id)
+    .then((medications) => res.json(medications))
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(`Unable to retrieve /medications/${id}`)
+    })
+})
+
+router.get('/users/:id', (req, res) => {
+  const id = req.params.id
+  console.log('users/id', id)
+  getKeyedEntity('users', id)
+    .then((user) => res.json(user))
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(`Unable to retrieve /users/${id}`)
+    })
 })
 
 export default router
