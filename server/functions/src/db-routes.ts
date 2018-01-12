@@ -26,7 +26,7 @@ function getKeyedEntity(collectionId: string, entityId: string) {
     .then((doc) => {
       if (!doc.exists) throw { error: `/${collectionId}/${entityId} does not exist` }
 
-      return { [doc.id]: doc.data() }
+      return { id: doc.id, ...doc.data() }
     })
 
 }
@@ -52,7 +52,6 @@ router.get('/medications/:id', (req, res) => {
 
 router.get('/users/:id', (req, res) => {
   const id = req.params.id
-  console.log('users/id', id)
   getKeyedEntity('users', id)
     .then((user) => res.json(user))
     .catch((err) => {
