@@ -1,0 +1,117 @@
+{
+  "users": {
+    "LEAbUIGTczb3RW3gAAVJzIfK2Dv2": {
+      "name": {
+        "first": "Eliot",
+        "last": "Slevin"
+      },
+      "role": "member",
+      "nhiNumber": "ABC1234",
+      "routines": [
+        {
+          "id": 0,
+          "name": "Wake",
+          "time": "8:00am"
+        },
+        {
+          "id": 1,
+          "name": "Break",
+          "time": "10:00am"
+        },
+        {
+          "id": 2,
+          "name": "Lunch",
+          "time": "12:30pm"
+        },
+        {
+          "id": 3,
+          "name": "Dinner",
+          "time": "6:30pm"
+        },
+        {
+          "id": 4,
+          "name": "Sleep",
+          "time": "10:00pm"
+        }
+      ],
+      "schedules": [
+        {
+          "medicationId": "UZe37BdqDh7CYVSbEuHY",
+          "routineId": "1",
+          "amount": "1"
+        },
+        {
+          "medicationId": "UZe37BdqDh7CYVSbEuHY",
+          "routineId": "3",
+          "amount": "1"
+        }
+      ]
+    },
+    "mJBSvjLQTdQLv1GQsgp5eEXMRQ63": {
+      "name": {
+        "first": "Chris",
+        "last": "Chou"
+      },
+      "role": "member",
+      "nhiNumber": "DEF1234",
+      "routines": [
+        {
+          "id": 0,
+          "name": "Wake",
+          "time": "8:00am"
+        },
+        {
+          "id": 1,
+          "name": "Break",
+          "time": "10:00am"
+        },
+        {
+          "id": 2,
+          "name": "Lunch",
+          "time": "12:30pm"
+        },
+        {
+          "id": 3,
+          "name": "Dinner",
+          "time": "6:30pm"
+        },
+        {
+          "id": 4,
+          "name": "Sleep",
+          "time": "10:00pm"
+        }
+      ],
+      "schedules": [
+        {
+          "medicationId": "UZe37BdqDh7CYVSbEuHY",
+          "routineId": "1",
+          "amount": "1"
+        },
+        {
+          "medicationId": "UZe37BdqDh7CYVSbEuHY",
+          "routineId": "2",
+          "amount": "8"
+        },
+        {
+          "medicationId": "EOpCOvmHKgaTL9Wk0p3S",
+          "routineId": "3",
+          "amount": "9"
+        }
+      ]
+    }
+  },
+  "medications": {
+    "UZe37BdqDh7CYVSbEuHY": {
+      "name": "Aspirin 100mg tablet",
+      "brandName": "Ethics Enteric Coated Aspirin",
+      "purpose": "Helps prevent stokes and heart attack",
+      "extraInfo": "Swallow whole, take with food"
+    },
+    "EOpCOvmHKgaTL9Wk0p3S": {
+      "name": "Panadol 100mg tablet",
+      "brandName": "Ethics Enteric Coated Panadol",
+      "purpose": "Pain",
+      "extraInfo": "Swallow whole, take with food"
+    }
+  }
+}
