@@ -20,90 +20,29 @@ export class MedList extends React.Component {
     ),
   }
 
-  get data() {
-    return {
-      users: [
-        {
-          id: 0,
-          name: "Eliot Slevin",
-          role: 'member',
-          nhiNumber: 'ABC1234'
-        }
-      ],
-      medications: [
-        {
-          id: 0,
-          name: 'Aspirin 100mg tablet',
-          brandName: 'Ethics Enteric Coated Aspirin',
-          purpose: 'Helps prevent stokes and heart attack',
-          extraInfo: 'Swallow whole, take with food'
-        }
-      ],
-      routines: [
-        {
-          id: 0,
-          user_id: 0,
-          name: 'Wake',
-          time: '8:00am'
-        },
-        {
-          id: 1,
-          user_id: 0,
-          name: 'Break',
-          time: '10:00am'
-        },
-        {
-          id: 2,
-          user_id: 0,
-          name: 'Lunch',
-          time: '12:30pm'
-        },
-        {
-          id: 3,
-          user_id: 0,
-          name: 'Dinner',
-          time: '6:30pm'
-        },
-        {
-          id: 4,
-          user_id: 0,
-          name: 'Sleep',
-          time: '10:00pm'
-        },
-      ],
-      schedules: [
-        {
-          medication_id: 0,
-          user_id: 0,
-          routine_id: 1,
-          amount: 1
-        },
-        {
-          medication_id: 0,
-          user_id: 0,
-          routine_id: 3,
-          amount: 1
-        },
-      ]
-    }
-  }
-
   componentDidMount() {
-    this.props.dispatch(updateMedsRequest())  
+    this.props.dispatch(updateMedsRequest())
   }
 
   render() {
-    const { navigation, router } = this.props;
+    const { navigation, router, user, medications } = this.props;
     return (
       <SafeAreaView style={styles.safeArea} forceInset={{ horizontal: 'always', top: 'always' }}>
         <View style={styles.container}>
-          <TitleBar title='Eliot Slevin' subTitle='ABC1234' />
+          <TitleBar title={`${user.data.name.first} ${user.data.name.last}`} subTitle={user.data.nhiNumber} />
           <ScrollView>
-            <LabelledDescription label='Generic Name:' description={this.data.medications[0].name} />
-            <LabelledDescription label='Brand Name:' description={this.data.medications[0].brandName} />
-            <LabelledDescription label="What's it for:" description={this.data.medications[0].purpose} />
-            <LabelledDescription label='Extra info:' description={this.data.medications[0].extraInfo} />
-            <SchedulePanel schedules={this.data.schedules} routines={this.data.routines} />
+            {Object.keys(medications.data).map((k, i) => {
+              const medication = medications.data[k]
+              return (
+                <View key={i}>
+                  <LabelledDescription label='Generic Name:' description={medication.name} />
+                  <LabelledDescription label='Brand Name:' description={medication.brandName} />
+                  <LabelledDescription label="What's it for:" description={medication.purpose} />
+                  <LabelledDescription label='Extra info:' description={medication.extraInfo} />
+                  <SchedulePanel medicationId={k} schedules={user.data.schedules} routines={user.data.routines} />
+                </View>
+              )
+            })}
           </ScrollView>
         </View>
       </SafeAreaView>

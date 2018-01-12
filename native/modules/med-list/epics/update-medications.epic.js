@@ -49,7 +49,7 @@ const UpdateMedicationsEpic = (action$, store) => {
       )
     })
     .catch((err) => {
-      console.log('medication epic err', JSON.stringify(err))
+      console.log(err)
       return Observable.concat(
         Observable.of(updateMedsFail(err))
       )
