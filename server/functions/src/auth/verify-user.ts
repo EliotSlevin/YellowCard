@@ -30,17 +30,3 @@ export const verifyUser = (req, res) => {
       return Promise.resolve({ uid, authIdToken, authRefreshToken })
     })
 }
-
-const router = require('express').Router()
-
-
-router.post('/', (req, res) => {
-  return verifyUser(req, res)
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {
-      console.log(err)
-      res.status(500).json(err)
-    })
-})
-
-export default router

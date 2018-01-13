@@ -1,3 +1,2 @@
-import verifyUserRoute, { verifyUser } from './verify-user'
-
-export { verifyUserRoute as default, verifyUser} 
+export { validateFirebaseIdTokenMiddleware as validateTokenMiddleware } from './validate-token.middleware'
+export { verifyUser } from './verify-user'

@@ -1,23 +1,23 @@
 import * as functions from 'firebase-functions';
-// import * as admin from 'firebase-admin'
-// admin.initializeApp(functions.config().firebase);
+import * as admin from 'firebase-admin'
+admin.initializeApp(functions.config().firebase);
 
 // tslint:disable-next-line:no-import-side-effect
 import 'dotenv/config'
-
-import authRoutes from './auth'
-import apiRoutes from './api-routes'
+import initRoutes from './init-routes'
 import dbRoutes from './db-routes'
+import { validateTokenMiddleware } from './auth'
 
-const express = require('express')
-const app = express()
+const cookieParser = require('cookie-parser')()
+const app = require('express')()
 
 // Automatically allow cross-origin requests
-// app.use(require('cors')())
+// app.use(require('cors')({ origin: true }))
 
-app.use('/auth', authRoutes)
+app.use('/init', initRoutes)
+app.use(cookieParser);
+app.use(validateTokenMiddleware);
 app.use('/db', dbRoutes)
-app.use('/', apiRoutes)
 
 // `/api` endpoint
 export const api = functions.https.onRequest(app)
