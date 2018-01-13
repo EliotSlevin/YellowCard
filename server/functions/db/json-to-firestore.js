@@ -1,7 +1,7 @@
 const admin = require('../node_modules/firebase-admin');
 const serviceAccount = require("../../yc_pk.json");
 
-const data = require("./data.json");
+const data = require("./seed-data.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
