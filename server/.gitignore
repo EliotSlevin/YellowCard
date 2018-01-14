@@ -56,6 +56,17 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# compiled artifact
+build/
+
+# misc
+.DS_Store
 
 # app-specific data
 yc_pk.json
+
