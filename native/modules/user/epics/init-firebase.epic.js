@@ -11,7 +11,7 @@ const InitFirebaseEpic = (action$, store) => {
       const { email, password } = action
       const state = store.getState()
       const requestSettings = () => ({
-        url: state.firebase.initDataUrl,
+        url: `${state.firebase.apiBaseUrl}/init`,
         method: 'POST',
         body: { email, password },
         crossDomain: true,

@@ -1,7 +1,7 @@
 import types from '../actions'
 
 const initialState = {
-  initDataUrl: 'https://us-central1-yellow-card-85ae7.cloudfunctions.net/api/',
+  apiBaseUrl: 'https://us-central1-yellow-card-85ae7.cloudfunctions.net/api',
   client: null,
   err: null,
   isProcessing: false

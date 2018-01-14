@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { NavigationActions } from 'react-navigation'
 
 import types, { loginSuccess, loginFail } from '../actions'
+import { identUpdate } from '../actions/auth';
 
 export default LoginUserEpic = (action$, store) => {
   return action$.ofType(types.LOGIN_REQUEST)
@@ -15,25 +16,27 @@ export default LoginUserEpic = (action$, store) => {
     })
     .mergeMap((user) => {
       if (Platform.OS === 'android') {
-        const state = store.getState()
-        const requestSettings = () => ({
-          url: `${state.firebase.initDataUrl}db/users/${user.uid}`,
-          method: 'GET',
-          crossDomain: true,
-          contentType: 'application/json; charset=utf-8',
-          responseType: 'json',
-        })
+        const { firebase } = store.getState()
+        return Observable.fromPromise(user.getIdToken())
+          .switchMap((token) => {
+            const requestSettings = () => ({
+              url: `${firebase.apiBaseUrl}/db/users/${user.uid}`,
+              method: 'GET',
+              headers: { 'Authorization': `Bearer ${token}` },
+              crossDomain: true,
+              contentType: 'application/json; charset=utf-8',
+              responseType: 'json',
+            })
 
-        return Observable.ajax(requestSettings())
-          .catch(({ xhr }) => {
-            throw xhr.response
-          })
-          .mergeMap(payload => {
-            if (payload.status === 200) {
-              const data = payload.response
+            return Observable.ajax(requestSettings())
+              .map(payload => {
+                if (payload.status === 200) {
+                  const data = payload.response
 
-              return Observable.of(data)
-            } else throw payload
+                  return data
+                } else throw payload
+              })
+
           })
       } else {
         return firebase.firestore().collection('users').doc(user.uid)
@@ -41,7 +44,7 @@ export default LoginUserEpic = (action$, store) => {
           .then((doc) => {
             if (!doc.exists) throw { error: `/users/${user.uid} does not exist` }
 
-            return Observable.of({id: doc.id, ...doc.data() })
+            return { id: doc.id, ...doc.data() }
           })
       }
     })
@@ -52,12 +55,12 @@ export default LoginUserEpic = (action$, store) => {
       })
 
       return Observable.concat(
-        Observable.of(loginSuccess(user, user.uid)),
+        Observable.of(loginSuccess(user)),
         Observable.of(navToMainScreen)
       )
     })
     .catch((err) => {
-      console.log('err', err.code, err.message)
+      console.log('login user epic err', err)
 
       return Observable.concat(
         Observable.of(loginFail(err))

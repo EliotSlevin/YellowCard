@@ -21,13 +21,15 @@ const componentStyles = {
 export default class SchedulePanel extends React.Component {
   render() {
     const medicationId = this.props.medicationId
+    console.log('medicationid', medicationId)
     const routines = this.props.routines
     const schedules = this.props.schedules
+    console.log('schedules', schedules)
 
     return (
       <View style={[componentStyles.container]}>
         {routines.map((routine, i) => {
-          const schedule = schedules.find((schedule) => schedule.routine_id == routine.id && schedule.medicationId === medicationId)
+          const schedule = schedules.find((schedule) => schedule.routineId == routine.id && schedule.medicationId === medicationId)
           if (schedule) {
             return (
               <View key={i} style={componentStyles.box}>
