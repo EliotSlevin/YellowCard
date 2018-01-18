@@ -1,7 +1,20 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write;
+    match /users/{uid} {
+      allow read, write: if request.auth.uid == uid 
+      || get(/databases/$(database)/documents/users/$(uid)).data.role in ["admin"];
+    }
+    
+    match /users/{uid}/routines/{routineId} {
+      allow read, write: if get(/databases/$(database)/documents/users/$(uid)).data.role in ["admin", "pharmacist"];
+    }
+
+    match /users/{uid}/schedules/{scheduleId} {
+      allow read, write: if get(/databases/$(database)/documents/users/$(uid)).data.role in ["admin", "pharmacist"];
+    }
+
+    match /medications/{medicationId} {
+      allow read, write: if get(/databases/$(database)/documents/users/$(uid)).data.role in ["admin", "pharmacist"];
     }
   }
 }
