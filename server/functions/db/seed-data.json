@@ -1,103 +1,104 @@
 {
+  "collections": [
+    "users",
+    "medications",
+    "routines",
+    "schedules"
+  ],
   "users": {
     "LEAbUIGTczb3RW3gAAVJzIfK2Dv2": {
       "name": {
         "first": "Eliot",
         "last": "Slevin"
       },
-      "role": "member",
+      "role": "admin",
       "nhiNumber": "ABC1234",
-      "routines": [
-        {
-          "id": 0,
+      "routines": {
+        "u5gnlAxYinXil8D0DqC2": {
           "name": "Wake",
           "time": "8:00am"
         },
-        {
-          "id": 1,
+        "7P33nnW1QkzmfWpWmYMC": {
           "name": "Break",
           "time": "10:00am"
         },
-        {
-          "id": 2,
+        "X6s9OrIgojDVFSTFfu7W": {
           "name": "Lunch",
           "time": "12:30pm"
         },
-        {
-          "id": 3,
+        "WqW9C0eIPowI4XRwm6pL": {
           "name": "Dinner",
           "time": "6:30pm"
         },
-        {
-          "id": 4,
+        "DCmzzxAD7TUHpfsf0ZwH": {
           "name": "Sleep",
           "time": "10:00pm"
         }
-      ],
-      "schedules": [
-        {
+      },
+      "schedules": {
+        "9K5Pti6Ymd3MGInIxTiG": {
           "medicationId": "UZe37BdqDh7CYVSbEuHY",
-          "routineId": "1",
+          "routineId": "7P33nnW1QkzmfWpWmYMC",
           "amount": "1"
         },
-        {
+        "azIdmmtCGoB2ItjOPaSK": {
           "medicationId": "UZe37BdqDh7CYVSbEuHY",
-          "routineId": "3",
+          "routineId": "WqW9C0eIPowI4XRwm6pL",
           "amount": "1"
         }
-      ]
+      }
     },
     "mJBSvjLQTdQLv1GQsgp5eEXMRQ63": {
       "name": {
         "first": "Chris",
         "last": "Chou"
       },
-      "role": "member",
+      "role": "pharmacist",
       "nhiNumber": "DEF1234",
-      "routines": [
-        {
+      "routines": {
+        "aMEerf0ljHDoDgoi5TAd": {
           "id": 0,
           "name": "Wake",
           "time": "8:00am"
         },
-        {
+        "2KNt8QoQ2qZTF6wwfwa7": {
           "id": 1,
           "name": "Break",
           "time": "10:00am"
         },
-        {
+        "6bqhmWDvRBVwrHn0uqDa": {
           "id": 2,
           "name": "Lunch",
           "time": "12:30pm"
         },
-        {
+        "Bpc6Pqi6PHsclWo9oFii": {
           "id": 3,
           "name": "Dinner",
           "time": "6:30pm"
         },
-        {
+        "XSCQ8Ch6PCbEvWLbC8SR": {
           "id": 4,
           "name": "Sleep",
           "time": "10:00pm"
         }
-      ],
-      "schedules": [
-        {
+      },
+      "schedules": {
+        "GO5fnQVFDlreh7KHmosS": {
           "medicationId": "UZe37BdqDh7CYVSbEuHY",
-          "routineId": "1",
+          "routineId": "2KNt8QoQ2qZTF6wwfwa7",
           "amount": "1"
         },
-        {
+        "SomzvxTYQi2PmLui6jek": {
           "medicationId": "UZe37BdqDh7CYVSbEuHY",
-          "routineId": "2",
+          "routineId": "6bqhmWDvRBVwrHn0uqDa",
           "amount": "8"
         },
-        {
+        "1HiuUWx3MTOLHugKJ2Bi": {
           "medicationId": "EOpCOvmHKgaTL9Wk0p3S",
-          "routineId": "3",
+          "routineId": "Bpc6Pqi6PHsclWo9oFii",
           "amount": "9"
         }
-      ]
+      }
     }
   },
   "medications": {
