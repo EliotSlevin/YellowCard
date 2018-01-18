@@ -9,22 +9,15 @@ admin.initializeApp({
 
 const setData = (key, content, docRef, batch, collections) => {
   if (typeof content === "object") {
-    console.log('key', key)
     if (collections.includes(key)) {
       Object.keys(content).forEach((innerDocId) => {
         const innerDocContent = content[innerDocId]
         const innerDocRef = docRef.collection(key).doc(innerDocId)
-        console.log('innerdocid', innerDocId, 'innerdoccontent', innerDocContent)
         setData(innerDocId, innerDocContent, innerDocRef, batch, collections)
-        // Object.keys(innerDocContent).forEach((innerContentInnerKey) => {
-        //   console.log('innerdocid', innerDocId, 'innerdoccontent', innerDocContent)
-        //   setData(innerContentInnerKey, innerDocContent, innerDocRef, batch, collections)
-        // })
       })
     } else {
       Object.keys(content).forEach((innerKey) => {
         const innerContent = content[innerKey]
-        console.log('innerkey', innerKey, 'innercontent', innerContent)
         setData(innerKey, innerContent, docRef, batch, collections)
       })
     }
