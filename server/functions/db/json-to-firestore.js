@@ -1,5 +1,6 @@
-const admin = require('../node_modules/firebase-admin')
+const admin = require('firebase-admin')
 const serviceAccount = require("../../yc_pk.json")
+if (serviceAccount['project_id'] === 'yellow-card-85ae7') throw 'Do not overwrite production data'
 
 const data = require("./seed-data.json")
 
