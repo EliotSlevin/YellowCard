@@ -5,7 +5,6 @@ admin.initializeApp(functions.config().firebase)
 // tslint:disable-next-line:no-import-side-effect
 import 'dotenv/config'
 import initRoutes from './init-routes'
-import dbRoutes from './db-routes'
 import { validateTokenMiddleware } from './auth'
 
 const cookieParser = require('cookie-parser')()
@@ -16,8 +15,8 @@ const app = require('express')()
 
 app.use('/init', initRoutes)
 app.use(cookieParser);
-app.use(validateTokenMiddleware);
-app.use('/db', dbRoutes)
+app.use(validateTokenMiddleware); // all routes below secured
+
 
 // `/api` endpoint
 export const api = functions.https.onRequest(app)
