@@ -57,27 +57,22 @@
       "nhiNumber": "DEF1234",
       "routines": {
         "aMEerf0ljHDoDgoi5TAd": {
-          "id": 0,
           "name": "Wake",
           "time": "8:00am"
         },
         "2KNt8QoQ2qZTF6wwfwa7": {
-          "id": 1,
           "name": "Break",
           "time": "10:00am"
         },
         "6bqhmWDvRBVwrHn0uqDa": {
-          "id": 2,
           "name": "Lunch",
           "time": "12:30pm"
         },
         "Bpc6Pqi6PHsclWo9oFii": {
-          "id": 3,
           "name": "Dinner",
           "time": "6:30pm"
         },
         "XSCQ8Ch6PCbEvWLbC8SR": {
-          "id": 4,
           "name": "Sleep",
           "time": "10:00pm"
         }
