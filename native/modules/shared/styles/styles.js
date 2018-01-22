@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Platform, Dimensions, StatusBar } from 'react-native';
 import { mergeWith, merge } from 'ramda'
 
-import { Constants } from 'expo';
 import styleOverrides from './styleOverrides'
 
 /*

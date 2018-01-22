@@ -3,5 +3,7 @@
     "sdkVersion": "23.0.0",
     "slug": "yellow-card",
     "name": "Yellow Card"
-  }
+  },
+  "name": "yellowcard",
+  "displayName": "Yellow Card"
 }
