@@ -8,6 +8,7 @@
     "react-scripts-ts": "2.10.0"
   },
   "scripts": {
+    "fb-deploy-db-rules": "firebase deploy --only firestore:rules",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
