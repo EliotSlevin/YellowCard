@@ -6,7 +6,7 @@ import {
 	SafeAreaView,
 	StatusBar
 } from 'react-native';
-import { MaterialIcons } from 'react-native-vector-icons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from '../modules/shared/styles'
 
 export default class Today extends React.Component {

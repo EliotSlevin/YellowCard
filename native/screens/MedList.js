@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, View, Text, SafeAreaView, ScrollView, FlatList, StatusBar } from 'react-native';
-import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux'
 
 
@@ -21,15 +21,17 @@ export class MedList extends React.Component {
   }
 
   componentDidMount() {
+    console.log('updatemedsrequest')
     this.props.dispatch(updateMedsRequest())
   }
 
   render() {
     const { navigation, router, user, medications } = this.props;
+    console.log('user', user, 'medications', medications.data)
     return (
       <SafeAreaView style={styles.safeArea} forceInset={{ horizontal: 'always', top: 'always' }}>
         <View style={styles.container}>
-          <TitleBar title={`${user.data.name.first} ${user.data.name.last}`} subTitle={user.data.nhiNumber} />
+          <TitleBar title={`${user.data.first} ${user.data.last}`} subTitle={user.data.nhiNumber} />
           <ScrollView>
             {Object.keys(medications.data).map((k, i) => {
               const medication = medications.data[k]
