@@ -1,8 +1,8 @@
 import { Platform } from 'react-native'
 import { Observable } from 'rxjs/Observable'
-// import '../../shared/rxjs-operators'
 import * as firebase from 'firebase'
 import 'firebase/firestore'
+import { requestJson, extractFirebaseData } from '../../shared'
 
 import types, { updateMedsSuccess, updateMedsFail } from '../actions'
 
@@ -14,21 +14,22 @@ const UpdateMedicationsEpic = (action$, store) => {
         // firestore client needs update to work with android, see firebase-js-sdk/#283
         return Observable.fromPromise(user.identity.getIdToken())
           .switchMap((token) => {
-            const requestSettings = () => ({
-              url: `${firebase.apiBaseUrl}/db/medications`,
-              method: 'GET',
-              headers: { 'Authorization': `Bearer ${token}` },
-              crossDomain: true,
-              contentType: 'application/json; charset=utf-8',
-              responseType: 'json',
-            })
+            const requestSettings = requestJson(
+              `https://firestore.googleapis.com/v1beta1/projects/yellow-card-85ae7/databases/(default)/documents/medications`,
+              'GET', token, null
+            )
 
-            return Observable.ajax(requestSettings())
+            return Observable.ajax(requestSettings)
               .map(payload => {
-                if (payload.status === 200) {
-                  const medications = payload.response
+                if (payload.status != 200) throw payload
+
+                const medications = payload.response.documents.reduce((medications, s) => {
+                  const schedule = extractFirebaseData(s)
+                  medications[schedule.id] = schedule
                   return medications
-                } else throw payload
+                }, {})
+
+                return medications
               })
           })
       } else {
@@ -44,8 +45,8 @@ const UpdateMedicationsEpic = (action$, store) => {
 
             return medications
           })
-      }
-    })
+        }
+      })
     .mergeMap((medications) => {
       return Observable.concat(
         Observable.of(updateMedsSuccess(medications))
