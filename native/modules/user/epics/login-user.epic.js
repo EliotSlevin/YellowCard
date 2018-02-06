@@ -17,7 +17,7 @@ export default LoginUserEpic = (action$, store) => {
       return firebase.auth().signInWithEmailAndPassword(email, password)
     })
     .mergeMap((user) => {
-      if (Platform.OS === 'android') {
+      // if (Platform.OS === 'android') {
         const { firebase } = store.getState()
         return user.getIdToken()
           .then((token) => {
@@ -74,28 +74,28 @@ export default LoginUserEpic = (action$, store) => {
 
             return { ...extractFirebaseData(responses[0]), routines, schedules }
           })
-      } else {
-        const userDoc = firebase.firestore().collection('users').doc(user.uid)
-        const actions = [
-          userDoc.get(),
-          userDoc.collection('routines').get(),
-          userDoc.collection('schedules').get()
-        ]
-        return Promise.all(actions)
-          .then((responses) => {
+      // } else {
+      //   const userDocRef = firebase.firestore().collection('users').doc(user.uid)
+      //   const actions = [
+      //     userDocRef.get(),
+      //     userDocRef.collection('routines').get(),
+      //     userDocRef.collection('schedules').get()
+      //   ]
+      //   return Promise.all(actions)
+      //     .then((responses) => {
+      //       console.log('returning userdocs', JSON.stringify(responses, null, 2))
+      //       const routines = []
+      //       responses[1].forEach((doc) => {
+      //         routines.push({ id: doc.id, ...doc.data() })
+      //       })
+      //       const schedules = []
+      //       responses[2].forEach((doc) => {
+      //         schedules.push({ id: doc.id, ...doc.data() })
+      //       })
 
-            const routines = []
-            responses[1].forEach((doc) => {
-              routines.push({ id: doc.id, ...doc.data() })
-            })
-            const schedules = []
-            responses[2].forEach((doc) => {
-              schedules.push({ id: doc.id, ...doc.data() })
-            })
-
-            return { id: responses[0].id, ...responses[0].data(), routines, schedules }
-          })
-      }
+      //       return { id: responses[0].id, ...responses[0].data(), routines, schedules }
+      //     })
+      // }
     })
     .mergeMap((user) => {
       const navToMainScreen = NavigationActions.navigate({
