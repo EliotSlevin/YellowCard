@@ -4,24 +4,23 @@ service cloud.firestore {
       allow read, write: if request.auth.uid == userId 
       || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin"];
 
-      match /schedules/{allSubcollections=**} {
-        allow read, write: if request.auth.uid == userId 
-        || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin", "pharmacist"];
-      }
-      
-      match /routines/{allSubcollections=**} {
-        allow read, write: if request.auth.uid == userId 
-        || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin", "pharmacist"];
-      }
-      
       match /{allSubcollections=**} {
         allow read, write: if request.auth.uid == userId 
         || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin"];
       }
+
+      match /schedules/{allSubcollections=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["pharmacist"];
+      }
+      
+      match /routines/{allSubcollections=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["pharmacist"];
+      }
     }
 
     match /medications/{allSubcollections=**} {
-      allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin", "pharmacist"];
+      allow read: if request.auth.uid != null;
+      allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["admin", "pharmacist"];
     }
   }
 }
