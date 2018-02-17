@@ -17,3 +17,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /\.vscode/\.react/
+android/app/yellow-card-release-key\.keystore
