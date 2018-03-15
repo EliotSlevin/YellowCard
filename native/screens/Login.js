@@ -30,7 +30,11 @@ const componentStyles = StyleSheet.create({
     letterSpacing: -0.5,
     marginTop: 15,
     fontWeight: "600"
-  }
+  },
+  form:{},
+  button: {
+
+  },
 });
 
 export class Login extends Component {
@@ -59,15 +63,15 @@ export class Login extends Component {
           <Image resizeMode="contain" style={componentStyles.logo} source={require("./images/login.png")} />
           <Text style={componentStyles.logoText}>Yellow Card</Text>
           <FormValidationMessage>{err}</FormValidationMessage>
-          <FormLabel>Email Address</FormLabel>
+          <FormLabel style={componentStyles.form} >Email Address</FormLabel>
           <FormInput keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
                 { email: text }
               )} />
-          <FormLabel>Password</FormLabel>
+          <FormLabel style={componentStyles.form}>Password</FormLabel>
           <FormInput secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
                 { password: text }
               )} />
-          <Button title="Sign in" onPress={() => this.onLoginAction()} />
+          <Button style={componentStyles.button} title="Login!" onPress={() => this.onLoginAction()} />
         </View>
       </SafeAreaView>;
   }
