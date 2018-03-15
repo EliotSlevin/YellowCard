@@ -53,6 +53,7 @@ const componentStyles = StyleSheet.create({
     marginTop: 15,
     fontWeight: "600"
 <<<<<<< HEAD
+<<<<<<< HEAD
   },
   form: {
     width: width / 1.25,
@@ -82,6 +83,13 @@ const componentStyles = StyleSheet.create({
 =======
 >>>>>>> fc1b91d... added the login logo and text
   }
+=======
+  },
+  form:{},
+  button: {
+
+  },
+>>>>>>> 1cda90c... added styling
 });
 
 export class Login extends Component {
@@ -131,15 +139,15 @@ export class Login extends Component {
   } 
 =======
           <FormValidationMessage>{err}</FormValidationMessage>
-          <FormLabel>Email Address</FormLabel>
+          <FormLabel style={componentStyles.form} >Email Address</FormLabel>
           <FormInput keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
                 { email: text }
               )} />
-          <FormLabel>Password</FormLabel>
+          <FormLabel style={componentStyles.form}>Password</FormLabel>
           <FormInput secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
                 { password: text }
               )} />
-          <Button title="Sign in" onPress={() => this.onLoginAction()} />
+          <Button style={componentStyles.button} title="Login!" onPress={() => this.onLoginAction()} />
         </View>
       </SafeAreaView>;
   }
