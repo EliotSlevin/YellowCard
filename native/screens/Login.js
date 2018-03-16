@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 
 =======
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Button, Image, Dimensions } from 'react-native';
 >>>>>>> fc1b91d... added the login logo and text
+=======
+import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, Button,KeyboardAvoidingView} from 'react-native';
+>>>>>>> 19c4b2f... changed the form inputs and button styling
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
@@ -13,11 +17,15 @@ import * as colors from '../modules/shared/colors'
 import { initFirebaseRequest } from '../modules/user'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const width = Dimensions.get("window").width;
 
 =======
 const imageWidth = Dimensions.get("window").width / 2;
 >>>>>>> fc1b91d... added the login logo and text
+=======
+const width = Dimensions.get("window").width;
+>>>>>>> 19c4b2f... changed the form inputs and button styling
 
 const componentStyles = StyleSheet.create({
   safeArea: {
@@ -37,14 +45,19 @@ const componentStyles = StyleSheet.create({
 
 =======
     backgroundColor: colors.YC_YELLOW,
-    alignItems: "center"
+    alignItems: "center",
   },
   logo: {
     alignItems: "center",
     justifyContent: "center",
+<<<<<<< HEAD
     width: imageWidth,
     height: imageWidth
 >>>>>>> fc1b91d... added the login logo and text
+=======
+    width: width / 2,
+    height: width / 3.5
+>>>>>>> 19c4b2f... changed the form inputs and button styling
   },
   logoText: {
     color: "#000",
@@ -85,11 +98,24 @@ const componentStyles = StyleSheet.create({
   }
 =======
   },
-  form:{},
-  button: {
-
+  form: {
+    width: width / 1.25,
+    height: 40,
+    backgroundColor: "#FFF",
+    color: "#000",
+    fontSize:0.04*width,
+     paddingLeft: 20,
+    marginVertical:10,
+    
   },
+<<<<<<< HEAD
 >>>>>>> 1cda90c... added styling
+=======
+  button: {
+    width: width / 1.25,
+    marginVertical:10
+  }
+>>>>>>> 19c4b2f... changed the form inputs and button styling
 });
 
 export class Login extends Component {
@@ -119,6 +145,9 @@ export class Login extends Component {
           <Image resizeMode="contain" style={componentStyles.logo} source={require("./images/login.png")} />
           <Text style={componentStyles.logoText}>Yellow Card</Text>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c4b2f... changed the form inputs and button styling
           <KeyboardAvoidingView behavior="padding">
             <FormValidationMessage>{err}</FormValidationMessage>
             <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
@@ -127,6 +156,7 @@ export class Login extends Component {
             <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
                   { password: text }
                 )} />
+<<<<<<< HEAD
 
             <TouchableOpacity style={componentStyles.buttonContainer} onPress={() => this.onLoginAction()}>
               <View style={componentStyles.button}>
@@ -152,6 +182,15 @@ export class Login extends Component {
       </SafeAreaView>;
   }
 >>>>>>> fc1b91d... added the login logo and text
+=======
+          </KeyboardAvoidingView>
+          <View style={componentStyles.button}>
+            <Button title="Login!" color="#000" onPress={() => this.onLoginAction()} />
+          </View>
+        </View>
+      </SafeAreaView>;
+  } 
+>>>>>>> 19c4b2f... changed the form inputs and button styling
 }
 
 const mapStateToProps = (state) => ({
