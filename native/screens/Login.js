@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View, SafeAreaView, Button, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, Button,KeyboardAvoidingView} from 'react-native';
 import { connect } from 'react-redux'
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
 import styles from '../modules/shared/styles'
 import * as colors from '../modules/shared/colors'
 import { initFirebaseRequest } from '../modules/user'
 
-const imageWidth = Dimensions.get("window").width / 2;
+const width = Dimensions.get("window").width;
 
 const componentStyles = StyleSheet.create({
   safeArea: {
@@ -16,13 +16,13 @@ const componentStyles = StyleSheet.create({
   container: {
     ...styles.container,
     backgroundColor: colors.YC_YELLOW,
-    alignItems: "center"
+    alignItems: "center",
   },
   logo: {
     alignItems: "center",
     justifyContent: "center",
-    width: imageWidth,
-    height: imageWidth
+    width: width / 2,
+    height: width / 3.5
   },
   logoText: {
     color: "#000",
@@ -31,10 +31,20 @@ const componentStyles = StyleSheet.create({
     marginTop: 15,
     fontWeight: "600"
   },
-  form:{},
-  button: {
-
+  form: {
+    width: width / 1.25,
+    height: 40,
+    backgroundColor: "#FFF",
+    color: "#000",
+    fontSize:0.04*width,
+     paddingLeft: 20,
+    marginVertical:10,
+    
   },
+  button: {
+    width: width / 1.25,
+    marginVertical:10
+  }
 });
 
 export class Login extends Component {
@@ -43,6 +53,7 @@ export class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      title: ''
     }
   }
 
@@ -62,19 +73,21 @@ export class Login extends Component {
         <View style={componentStyles.container}>
           <Image resizeMode="contain" style={componentStyles.logo} source={require("./images/login.png")} />
           <Text style={componentStyles.logoText}>Yellow Card</Text>
-          <FormValidationMessage>{err}</FormValidationMessage>
-          <FormLabel style={componentStyles.form} >Email Address</FormLabel>
-          <FormInput keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
-                { email: text }
-              )} />
-          <FormLabel style={componentStyles.form}>Password</FormLabel>
-          <FormInput secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
-                { password: text }
-              )} />
-          <Button style={componentStyles.button} title="Login!" onPress={() => this.onLoginAction()} />
+          <KeyboardAvoidingView behavior="padding">
+            <FormValidationMessage>{err}</FormValidationMessage>
+            <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
+                  { email: text }
+                )} />
+            <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
+                  { password: text }
+                )} />
+          </KeyboardAvoidingView>
+          <View style={componentStyles.button}>
+            <Button title="Login!" color="#000" onPress={() => this.onLoginAction()} />
+          </View>
         </View>
       </SafeAreaView>;
-  }
+  } 
 }
 
 const mapStateToProps = (state) => ({
