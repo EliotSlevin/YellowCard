@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
+=======
+import { StyleSheet, Text, TextInput, View, SafeAreaView, Button, Image, Dimensions } from 'react-native';
+>>>>>>> fc1b91d... added the login logo and text
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
@@ -7,7 +11,11 @@ import styles from '../modules/shared/styles'
 import * as colors from '../modules/shared/colors'
 import { initFirebaseRequest } from '../modules/user'
 
+<<<<<<< HEAD
 const width = Dimensions.get("window").width;
+=======
+const imageWidth = Dimensions.get("window").width / 2;
+>>>>>>> fc1b91d... added the login logo and text
 
 const componentStyles = StyleSheet.create({
   safeArea: {
@@ -15,6 +23,7 @@ const componentStyles = StyleSheet.create({
   },
   container: {
     ...styles.container,
+<<<<<<< HEAD
     backgroundColor: colors.YC_LOGIN_YELLOW,
     alignItems: "center"
   },
@@ -23,6 +32,16 @@ const componentStyles = StyleSheet.create({
     alignItems: "center",
     width: width / 4,
     height: width / 4
+=======
+    backgroundColor: colors.YC_YELLOW,
+    alignItems: "center"
+  },
+  logo: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: imageWidth,
+    height: imageWidth
+>>>>>>> fc1b91d... added the login logo and text
   },
   logoText: {
     color: "#000",
@@ -30,6 +49,7 @@ const componentStyles = StyleSheet.create({
     letterSpacing: -0.5,
     marginTop: 15,
     fontWeight: "600"
+<<<<<<< HEAD
   },
   form: {
     width: width / 1.25,
@@ -56,6 +76,8 @@ const componentStyles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "300",
     paddingVertical: 10
+=======
+>>>>>>> fc1b91d... added the login logo and text
   }
 });
 
@@ -85,6 +107,7 @@ export class Login extends Component {
         <View style={componentStyles.container}>
           <Image resizeMode="contain" style={componentStyles.logo} source={require("./images/login.png")} />
           <Text style={componentStyles.logoText}>Yellow Card</Text>
+<<<<<<< HEAD
           <KeyboardAvoidingView behavior="padding">
             <FormValidationMessage>{err}</FormValidationMessage>
             <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
@@ -103,6 +126,21 @@ export class Login extends Component {
         </View>
       </SafeAreaView>;
   } 
+=======
+          <FormValidationMessage>{err}</FormValidationMessage>
+          <FormLabel>Email Address</FormLabel>
+          <FormInput keyboardType="email-address" autoCapitalize="none" placeholder="Email Address" value={this.state.email} onChangeText={text => this.setState(
+                { email: text }
+              )} />
+          <FormLabel>Password</FormLabel>
+          <FormInput secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
+                { password: text }
+              )} />
+          <Button title="Sign in" onPress={() => this.onLoginAction()} />
+        </View>
+      </SafeAreaView>;
+  }
+>>>>>>> fc1b91d... added the login logo and text
 }
 
 const mapStateToProps = (state) => ({
