@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, Button,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
@@ -15,14 +15,14 @@ const componentStyles = StyleSheet.create({
   },
   container: {
     ...styles.container,
-    backgroundColor: colors.YC_YELLOW,
-    alignItems: "center",
+    backgroundColor: colors.YC_LOGIN_YELLOW,
+    alignItems: "center"
   },
   logo: {
-    alignItems: "center",
     justifyContent: "center",
-    width: width / 2,
-    height: width / 3.5
+    alignItems: "center",
+    width: width / 4,
+    height: width / 4
   },
   logoText: {
     color: "#000",
@@ -34,16 +34,28 @@ const componentStyles = StyleSheet.create({
   form: {
     width: width / 1.25,
     height: 40,
+    borderRadius: 5,
     backgroundColor: "#FFF",
     color: "#000",
-    fontSize:0.04*width,
-     paddingLeft: 20,
-    marginVertical:10,
-    
+    fontSize: 0.04 * width,
+    paddingLeft: 20,
+    marginVertical: 10
+  },
+  buttonContainer: {
+    alignItems: "center"
   },
   button: {
+    alignItems: "center",
+    backgroundColor: "#000",
+    borderRadius: 5,
     width: width / 1.25,
-    marginVertical:10
+    marginVertical: 10
+  },
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18,
+    fontWeight: "300",
+    paddingVertical: 10
   }
 });
 
@@ -81,10 +93,13 @@ export class Login extends Component {
             <FormInput inputStyle={componentStyles.form} underlineColorAndroid="transparent" secureTextEntry={true} password={true} autoCapitalize="none" placeholder="Password" onChangeText={text => this.setState(
                   { password: text }
                 )} />
+
+            <TouchableOpacity style={componentStyles.buttonContainer} onPress={() => this.onLoginAction()}>
+              <View style={componentStyles.button}>
+                <Text style={componentStyles.buttonText}>Login!</Text>
+              </View>
+            </TouchableOpacity>
           </KeyboardAvoidingView>
-          <View style={componentStyles.button}>
-            <Button title="Login!" color="#000" onPress={() => this.onLoginAction()} />
-          </View>
         </View>
       </SafeAreaView>;
   } 
