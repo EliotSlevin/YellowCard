@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
 
 =======
@@ -9,6 +10,9 @@ import { StyleSheet, Text, TextInput, View, SafeAreaView, Button, Image, Dimensi
 =======
 import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, Button,KeyboardAvoidingView} from 'react-native';
 >>>>>>> 19c4b2f... changed the form inputs and button styling
+=======
+import { StyleSheet, Text, TextInput, View, SafeAreaView, Image, Dimensions, TouchableOpacity ,KeyboardAvoidingView} from 'react-native';
+>>>>>>> 8b2dd71... changed the background color and button styling
 import { connect } from 'react-redux'
 import { FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
@@ -34,6 +38,7 @@ const componentStyles = StyleSheet.create({
   container: {
     ...styles.container,
 <<<<<<< HEAD
+<<<<<<< HEAD
     backgroundColor: colors.YC_LOGIN_YELLOW,
     alignItems: "center"
   },
@@ -46,10 +51,14 @@ const componentStyles = StyleSheet.create({
 =======
     backgroundColor: colors.YC_YELLOW,
     alignItems: "center",
+=======
+    backgroundColor: colors.YC_LOGIN_YELLOW,
+    alignItems: "center"
+>>>>>>> 8b2dd71... changed the background color and button styling
   },
   logo: {
-    alignItems: "center",
     justifyContent: "center",
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: imageWidth,
     height: imageWidth
@@ -58,6 +67,11 @@ const componentStyles = StyleSheet.create({
     width: width / 2,
     height: width / 3.5
 >>>>>>> 19c4b2f... changed the form inputs and button styling
+=======
+    alignItems: "center",
+    width: width / 4,
+    height: width / 4
+>>>>>>> 8b2dd71... changed the background color and button styling
   },
   logoText: {
     color: "#000",
@@ -101,19 +115,31 @@ const componentStyles = StyleSheet.create({
   form: {
     width: width / 1.25,
     height: 40,
+    borderRadius: 5,
     backgroundColor: "#FFF",
     color: "#000",
-    fontSize:0.04*width,
-     paddingLeft: 20,
-    marginVertical:10,
-    
+    fontSize: 0.04 * width,
+    paddingLeft: 20,
+    marginVertical: 10
+  },
+  buttonContainer: {
+    alignItems: "center"
   },
 <<<<<<< HEAD
 >>>>>>> 1cda90c... added styling
 =======
   button: {
+    alignItems: "center",
+    backgroundColor: "#000",
+    borderRadius: 5,
     width: width / 1.25,
-    marginVertical:10
+    marginVertical: 10
+  },
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18,
+    fontWeight: "300",
+    paddingVertical: 10
   }
 >>>>>>> 19c4b2f... changed the form inputs and button styling
 });
@@ -157,12 +183,16 @@ export class Login extends Component {
                   { password: text }
                 )} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b2dd71... changed the background color and button styling
 
             <TouchableOpacity style={componentStyles.buttonContainer} onPress={() => this.onLoginAction()}>
               <View style={componentStyles.button}>
                 <Text style={componentStyles.buttonText}>Login!</Text>
               </View>
             </TouchableOpacity>
+<<<<<<< HEAD
           </KeyboardAvoidingView>
         </View>
       </SafeAreaView>;
@@ -183,10 +213,9 @@ export class Login extends Component {
   }
 >>>>>>> fc1b91d... added the login logo and text
 =======
+=======
+>>>>>>> 8b2dd71... changed the background color and button styling
           </KeyboardAvoidingView>
-          <View style={componentStyles.button}>
-            <Button title="Login!" color="#000" onPress={() => this.onLoginAction()} />
-          </View>
         </View>
       </SafeAreaView>;
   } 
