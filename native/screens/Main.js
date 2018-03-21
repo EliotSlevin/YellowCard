@@ -11,23 +11,29 @@ const Main = TabNavigator(
   {
     Today: {
       screen: Today,
-      path: 'today',
+      path: "today"
     },
     MedList: {
       screen: MedList,
-      path: 'med-list'
+      path: "med-list"
     }
   },
   {
-    initialRouteName: 'MedList',
-		tabBarPosition: 'bottom',
+    initialRouteName: "MedList",
+    tabBarPosition: "bottom",
     tabBarOptions: {
       activeBackgroundColor: colors.YC_NAVBAR_BKG,
+      style: {
+        backgroundColor: colors.YC_NAVBAR_BKG,
+      },
       inactiveBackgroundColor: colors.YC_NAVBAR_BKG,
+      style: {
+        backgroundColor: colors.YC_NAVBAR_BKG,
+      },
       activeTintColor: colors.YC_YELLOW,
-      inactiveTintColor: '#fff', // white
-      showIcon: true,
-    },
+      inactiveTintColor: "#fff", // white
+      showIcon: true
+    }
   }
 );
 
